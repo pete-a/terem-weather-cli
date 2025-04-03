@@ -7,7 +7,8 @@
     "format": "prettier --write ./src",
     "lint": "eslint ./src",
     "build": "esbuild src/index.ts --format=esm --bundle --platform=node --outfile=dist/index.js",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "test": "vitest run"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +22,10 @@
     "globals": "^16.0.0",
     "prettier": "3.5.3",
     "typescript": "^5.8.2",
-    "typescript-eslint": "^8.28.0"
+    "typescript-eslint": "^8.28.0",
+    "vitest": "^3.1.1"
+  },
+  "dependencies": {
+    "zod": "^3.24.2"
   }
 }
