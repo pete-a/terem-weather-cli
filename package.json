@@ -6,7 +6,7 @@
     "start": "node dist/index.js",
     "format": "prettier --write ./src",
     "lint": "eslint ./src",
-    "build": "esbuild src/index.ts --format=esm --bundle --platform=node --outfile=dist/index.js",
+    "build": "esbuild src/index.ts --format=esm --bundle --sourcemap --platform=node --outfile=dist/index.js",
     "type-check": "tsc",
     "test": "vitest run"
   },

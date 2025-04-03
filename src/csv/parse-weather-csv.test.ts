@@ -16,6 +16,7 @@ describe("parseWeatherCsv", async () => {
     "IDCJAC0009,066062,1858,01,01,1.2,,",
     "IDCJAC0009,066062,2020,04,03,,,",
     "IDCJAC0009,066062,2019,12,02,0.2,,",
+    "IDCJAC0009,066062,2019,12,03,0,,",
   ]);
 
   const parseResult = await parseWeatherCsvData(rowIterator);
@@ -38,6 +39,12 @@ describe("parseWeatherCsv", async () => {
       month: "12",
       day: "02",
       rainfallInMicrometers: 200,
+    },
+    {
+      year: "2019",
+      month: "12",
+      day: "03",
+      rainfallInMicrometers: 0,
     },
   ];
 

@@ -37,6 +37,7 @@ describe("createAggregation", () => {
   it("has the correct first recording", () => {
     expect(result.firstMeasurementDate).toEqual("2020-01-01");
   });
+
   it("has the correct last recording", () => {
     expect(result.lastMeasurementDate).toEqual("2020-01-04");
   });

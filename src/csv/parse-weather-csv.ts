@@ -96,9 +96,10 @@ async function processCsvRow(
       year,
       month,
       day,
-      rainfallInMicrometers: rainfallInMillimeters
-        ? Math.round(rainfallInMillimeters * 1000)
-        : null,
+      rainfallInMicrometers:
+        rainfallInMillimeters !== null
+          ? Math.round(rainfallInMillimeters * 1000)
+          : null,
     },
   };
 }
