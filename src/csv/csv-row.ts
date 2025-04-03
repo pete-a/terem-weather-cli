@@ -1,4 +1,4 @@
-import { CsvHeader } from "./csv-header.js";
+import { CsvHeader } from "./csv-header.ts";
 
 export type CsvRow<T extends string> = {
   [key in T]: string | undefined;

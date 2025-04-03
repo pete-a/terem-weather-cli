@@ -6,7 +6,7 @@ import {
 import {
   createYearlyAggregation,
   YearlyAggregation,
-} from "./create-yearly-aggregation.js";
+} from "./create-yearly-aggregation.ts";
 
 export function aggregateMeasurements(
   measurements: WeatherMeasurementWithRainfall[],

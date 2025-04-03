@@ -1,11 +1,11 @@
 import {
   groupMeasurementsByMonth,
   WeatherMeasurementWithRainfall,
-} from "../weather-measurement.js";
+} from "../weather-measurement.ts";
 import {
   createMonthlyAggregation,
   MonthlyAggregation,
-} from "./create-monthly-aggregation.js";
+} from "./create-monthly-aggregation.ts";
 
 export type YearlyAggregation = {
   year: string;

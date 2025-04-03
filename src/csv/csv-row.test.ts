@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { makeCsvHeader } from "./csv-header.js";
-import { makeCsvRow } from "./csv-row.js";
+import { makeCsvHeader } from "./csv-header.ts";
+import { makeCsvRow } from "./csv-row.ts";
 
 describe("CsvRow", () => {
   const columns = ["A", "B", "C"] as const;

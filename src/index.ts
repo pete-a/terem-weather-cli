@@ -2,8 +2,8 @@ import fs from "node:fs";
 import fsAsync from "node:fs/promises";
 import readline from "node:readline";
 import { parseWeatherCsvData } from "./csv/parse-weather-csv.ts";
-import { isWeatherMeasurementWithRainfall } from "./weather-measurement.js";
-import { aggregateMeasurements } from "./aggregation/aggregate-measurements.js";
+import { isWeatherMeasurementWithRainfall } from "./weather-measurement.ts";
+import { aggregateMeasurements } from "./aggregation/aggregate-measurements.ts";
 
 const inputPath = "data/IDCJAC0009_066062_1800_Data.csv";
 const outputPath = "data/output.json";

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { makeCsvHeader } from "./csv-header.js";
+import { makeCsvHeader } from "./csv-header.ts";
 
 describe("makeCsvHeader", () => {
   const columnNames = ["Year", "Month", "Day"] as const;

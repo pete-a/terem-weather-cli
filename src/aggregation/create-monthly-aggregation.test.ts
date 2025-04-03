@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { WeatherMeasurement } from "../weather-measurement.ts";
-import { createMonthlyAggregation } from "./create-monthly-aggregation.js";
+import { createMonthlyAggregation } from "./create-monthly-aggregation.ts";
 
 describe("createAggregation", () => {
   const measurements: (WeatherMeasurement & {

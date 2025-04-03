@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { parseWeatherCsvData } from "./parse-weather-csv.ts";
-import { WeatherMeasurement } from "../weather-measurement.js";
+import { WeatherMeasurement } from "../weather-measurement.ts";
 
 async function* makeAsyncIteratorFromArray<T>(array: T[]) {
   for (const item of array) {
