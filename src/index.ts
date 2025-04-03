@@ -6,7 +6,7 @@ import { isWeatherMeasurementWithRainfall } from "./weather-measurement.ts";
 import { aggregateMeasurements } from "./aggregation/aggregate-measurements.ts";
 
 const inputPath = "data/IDCJAC0009_066062_1800_Data.csv";
-const outputPath = "data/output.json";
+const outputPath = "tmp/output.json";
 
 async function run() {
   const fileStream = fs.createReadStream(inputPath);

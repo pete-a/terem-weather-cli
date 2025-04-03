@@ -7,7 +7,8 @@
     "format": "prettier --write ./src",
     "lint": "eslint ./src",
     "build": "esbuild src/index.ts --format=esm --bundle --sourcemap --platform=node --outfile=dist/index.js",
-    "type-check": "tsc",
+    "build-and-run": "npm run build && npm start",
+    "type-check": "tsc --noEmit",
     "test": "vitest run"
   },
   "keywords": [],
