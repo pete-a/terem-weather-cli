@@ -4,6 +4,7 @@ import readline from "node:readline";
 import { parseWeatherCsvData } from "./csv/parse-weather-csv.ts";
 import { isWeatherMeasurementWithRainfall } from "./weather-measurement.ts";
 import { aggregateMeasurements } from "./aggregation/aggregate-measurements.ts";
+import { formatDataToJsonFormat } from "./formatting/mappings.js";
 
 const inputPath = "data/IDCJAC0009_066062_1800_Data.csv";
 const outputPath = "tmp/output.json";
@@ -28,8 +29,9 @@ async function run() {
   );
 
   const data = aggregateMeasurements(measurementsWithRainfall);
+  const formattedData = formatDataToJsonFormat(data);
 
-  await fsAsync.writeFile(outputPath, JSON.stringify(data, null, 2));
+  await fsAsync.writeFile(outputPath, JSON.stringify(formattedData, null, 2));
   console.log(`JSON written to ${outputPath}`);
 }
 

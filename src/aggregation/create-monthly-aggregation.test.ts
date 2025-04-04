@@ -12,7 +12,7 @@ describe("createAggregation", () => {
     { year: "2020", month: "01", day: "03", rainfallInMicrometers: 0 },
   ];
 
-  const result = createMonthlyAggregation(measurements);
+  const result = createMonthlyAggregation("2020", "01", measurements);
 
   it("has the correct total rainfall", () => {
     expect(result.totalRainfallInMillimeters).toEqual(2.3);

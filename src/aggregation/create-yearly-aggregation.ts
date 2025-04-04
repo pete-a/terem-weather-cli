@@ -53,9 +53,11 @@ export function createYearlyAggregation(
     totalDaysWithRainfall,
     totalDaysWithoutRainfall,
     longestRainingStreakInDays,
-    monthlyAggregations: Object.keys(monthlyMeasurements).map((month) =>
-      createMonthlyAggregation(monthlyMeasurements[month]),
-    ),
+    monthlyAggregations: Object.keys(monthlyMeasurements)
+      .map((month) =>
+        createMonthlyAggregation(year, month, monthlyMeasurements[month]),
+      )
+      .sort((a, b) => a.monthNumber - b.monthNumber),
   };
 }
 

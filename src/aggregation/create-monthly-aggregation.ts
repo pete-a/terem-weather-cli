@@ -9,6 +9,8 @@ import {
 } from "./shared-calculations.ts";
 
 export type MonthlyAggregation = {
+  monthDate: string;
+  monthNumber: number;
   firstMeasurementDate: string;
   lastMeasurementDate: string;
   totalRainfallInMillimeters: number;
@@ -19,6 +21,8 @@ export type MonthlyAggregation = {
 };
 
 export function createMonthlyAggregation(
+  year: string,
+  month: string,
   weatherMeasurements: WeatherMeasurementWithRainfall[],
 ): MonthlyAggregation {
   const totalRainfall = calculateTotalRainfall(weatherMeasurements);
@@ -33,6 +37,8 @@ export function createMonthlyAggregation(
     calculateFirstAndLastMeasureMeasurement(weatherMeasurements);
 
   return {
+    monthDate: `${year}-${month}`,
+    monthNumber: parseInt(month),
     totalRainfallInMillimeters: totalRainfall / 1000,
     averageRainfallInMillimeters: averageRainfall / 1000,
     medianRainfallInMillimeters: medianRainfall / 1000,

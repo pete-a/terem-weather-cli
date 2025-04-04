@@ -53,11 +53,11 @@ export function groupMeasurementsByMonth<
 >(measurements: T[]): Record<string, T[]> {
   return measurements.reduce(
     (acc, measurement) => {
-      const monthKey = `${measurement.year}-${measurement.month}`;
-      if (!acc[monthKey]) {
-        acc[monthKey] = [];
+      const month = measurement.month;
+      if (!acc[month]) {
+        acc[month] = [];
       }
-      acc[monthKey].push(measurement);
+      acc[month].push(measurement);
       return acc;
     },
     {} as Record<string, T[]>,
