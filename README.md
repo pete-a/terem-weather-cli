@@ -1,4 +1,22 @@
 # Terem Weather CLI
+## 🏗️ Setup
+- Node.js v20 or later is required
+- `cd` into the project
+- run `npm install`
+- run `npm run build`
+
+## 🏃Running the application
+
+`npm start <csv-input-path> <json-output-path>`
+
+### Example
+```
+npm start ./data/input.csv ./output.json
+```
+
+## 📘 Examples and documents
+- The test's instructions are located at `instructions.pdf`
+- An example JSON output is located at `data/example-output.json`
 
 ## ⚠️ Assumptions 
 ### JSON structure
@@ -24,20 +42,19 @@ However, the example JSON structure is a single object that doesn't allow for re
   }
 }
 ```
-I have made the assumption the `WeatherDataForYear` and `WeatherDataForMonth` properties should actually be an array of 
-objects, not a single object:
+I have made the assumption the `WeatherDataForYear` and `WeatherDataForMonth` properties are placeholders for the year / month value:
 ```json
 {
   "WeatherData": {
-    "WeatherDataForYear": [{
+    "2019": {
       "Year": "2019",
       ...
       "MonthlyAggregates": {
-        "WeatherDataForMonth": [{
+        "2019-01": {
           ...
-        }]
+        }
       }
-    }]
+    }
   }
 }
 ```
@@ -65,8 +82,8 @@ I have decided to follow the standard practice of representing these values as n
 
 ```
 ### Rainfall data
-I am assuming that dates with not rainfall data are not included in the 'Days with/without rainffall' properties.
-If there is a date with missing data, it will stop any 'Longest number days raining' streak
+- I am assuming that dates with no rainfall data are not included in the 'Days with/without rainffall' properties.
+- If there is a date with missing data, it will stop any 'Longest number days raining' streak
 
 ### Measurement period
 There is one recording (26 April 2008) where the 'Period over which rainfall was measured (days)' is two days and not one.
