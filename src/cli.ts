@@ -1,9 +1,9 @@
 import fs from "node:fs";
 import readline from "node:readline";
-import { parseWeatherCsvData } from "./csv/parse-weather-csv.js";
-import { isWeatherMeasurementWithRainfall } from "./weather-measurement.js";
-import { aggregateMeasurements } from "./aggregation/aggregate-measurements.js";
-import { formatDataToJsonFormat } from "./formatting/mappings.js";
+import { parseWeatherCsvData } from "./csv/parse-weather-csv.ts";
+import { isWeatherMeasurementWithRainfall } from "./weather-measurement.ts";
+import { aggregateMeasurements } from "./aggregation/aggregate-measurements.ts";
+import { formatDataToJsonFormat } from "./formatting/mappings.ts";
 import fsAsync from "node:fs/promises";
 
 type RunCliResult =

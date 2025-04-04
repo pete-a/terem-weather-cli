@@ -13,7 +13,7 @@ import {
   calculateFirstAndLastMeasureMeasurement,
   calculateTotalDaysWithRainfall,
   calculateTotalRainfall,
-} from "./shared-calculations.js";
+} from "./shared-calculations.ts";
 
 export type YearlyAggregation = {
   year: string;
