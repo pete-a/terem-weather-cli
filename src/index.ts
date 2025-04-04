@@ -1,41 +1,42 @@
-import fs from "node:fs";
-import fsAsync from "node:fs/promises";
-import readline from "node:readline";
-import { parseWeatherCsvData } from "./csv/parse-weather-csv.ts";
-import { isWeatherMeasurementWithRainfall } from "./weather-measurement.ts";
-import { aggregateMeasurements } from "./aggregation/aggregate-measurements.ts";
-import { formatDataToJsonFormat } from "./formatting/mappings.js";
+import { parseArgs, runApplication } from "./cli.ts";
 
-const inputPath = "data/IDCJAC0009_066062_1800_Data.csv";
-const outputPath = "tmp/output.json";
+async function init() {
+  const parseArgsResult = await parseArgs(process.argv.slice(2));
+  switch (parseArgsResult.type) {
+    case "success":
+      await runApplicationAndDisplayOutput(
+        parseArgsResult.csvInputPath,
+        parseArgsResult.jsonOutputPath,
+      );
+      return;
+    case "error":
+      return displayErrorAndExit(parseArgsResult.error);
+    case "help":
+      console.log(parseArgsResult.message);
+      return;
+  }
+}
 
-async function run() {
-  const fileStream = fs.createReadStream(inputPath);
-  const readlineInterface = readline.createInterface({
-    input: fileStream,
-    crlfDelay: Infinity,
-  });
+function displayErrorAndExit(error: string) {
+  console.error(error);
+  process.exit(1);
+}
 
-  const result = await parseWeatherCsvData(readlineInterface);
+async function runApplicationAndDisplayOutput(
+  csvInputPath: string,
+  jsonOutputPath: string,
+) {
+  const applicationResult = await runApplication(csvInputPath, jsonOutputPath);
 
-  if (!result.success) {
-    console.error(result.error);
+  if (!applicationResult.success) {
+    console.error(applicationResult.error);
     process.exit(1);
   }
 
-  const measurements = result.weatherMeasurements;
-  const measurementsWithRainfall = measurements.filter(
-    isWeatherMeasurementWithRainfall,
-  );
-
-  const data = aggregateMeasurements(measurementsWithRainfall);
-  const formattedData = formatDataToJsonFormat(data);
-
-  await fsAsync.writeFile(outputPath, JSON.stringify(formattedData, null, 2));
-  console.log(`JSON written to ${outputPath}`);
+  console.log(applicationResult.message);
 }
 
-run().catch((e) => {
+init().catch((e) => {
   console.error(e);
   process.exit(1);
 });
