@@ -1,8 +1,12 @@
 import {
   dateStringOfMeasurement,
-  sortMeasurementsByDate,
   WeatherMeasurementWithRainfall,
 } from "../weather-measurement.ts";
+import {
+  calculateFirstAndLastMeasureMeasurement,
+  calculateTotalDaysWithRainfall,
+  calculateTotalRainfall,
+} from "./shared-calculations.ts";
 
 export type MonthlyAggregation = {
   firstMeasurementDate: string;
@@ -39,15 +43,6 @@ export function createMonthlyAggregation(
   };
 }
 
-function calculateTotalRainfall(
-  measurements: WeatherMeasurementWithRainfall[],
-): number {
-  return measurements.reduce(
-    (acc, measurement) => acc + measurement.rainfallInMicrometers,
-    0,
-  );
-}
-
 function calculateMedianRainfall(
   measurements: WeatherMeasurementWithRainfall[],
 ): number {
@@ -59,21 +54,4 @@ function calculateMedianRainfall(
     return values[middle];
   }
   return (values[middle - 1] + values[middle]) / 2;
-}
-
-function calculateTotalDaysWithRainfall(
-  measurements: WeatherMeasurementWithRainfall[],
-): number {
-  return measurements.filter(
-    (measurement) => measurement.rainfallInMicrometers > 0,
-  ).length;
-}
-
-function calculateFirstAndLastMeasureMeasurement(
-  measurements: WeatherMeasurementWithRainfall[],
-) {
-  measurements.sort(sortMeasurementsByDate);
-  const firstMeasurement = measurements[0];
-  const lastMeasurement = measurements[measurements.length - 1];
-  return { firstMeasurement, lastMeasurement };
 }
